@@ -32,6 +32,7 @@ def generate_poem():
 
     # Load image
     image = Image.open(image_path)
+    image = Image.open(image_path).convert("RGB")
 
     # Get the Gemini model
     model = genai.GenerativeModel("gemini-1.5-flash")

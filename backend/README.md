@@ -1,5 +1,5 @@
 
-Run these commends one by one after entering the backend folder to install dependencies
+Run these commands one by one after entering the backend folder to install dependencies
 
 python -m venv venv
 .\venv\Scripts\activate
