@@ -39,7 +39,7 @@ def generate_poem():
     model = genai.GenerativeModel("gemini-1.5-flash")
 
     # Generate a poem
-    response = model.generate_content(["Write a poem for image with proper breaks and alignment.", image])
+    response = model.generate_content(["Write a poem based on this image with poem structure.", image])
 
     # Save poem to JSON
     poem_data = {"text": response.text}

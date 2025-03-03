@@ -32,9 +32,15 @@ const ImagePoemChatbot = () => {
       <input type="file" accept="image/*" onChange={handleImageUpload} className="mb-4 choose-file" /><br/>
       {image && <img height={200} width={200} src={image} alt="Uploaded Preview" className="w-64 h-auto mb-4 rounded-lg image-uploaded" />}
       {loading ? (
-            <p className="text-lg font-semibold text-indigo-600 animate-pulse">✨ Generating poem...</p>
-        ) : (
-            <p className="text-lg font-medium text-gray-700">{poem || "Your poem will appear here!"}</p>
+        <p className="text-lg font-semibold text-indigo-600 animate-pulse">✨ Generating poem...</p>
+      ) : (
+        <div className="text-lg font-medium text-gray-700 text-center">
+          {poem
+            ? poem.split("\n").map((line, index) => (
+                <p key={index} className="mb-2">{line}</p>
+              ))
+            : "Your poem will appear here!"}
+        </div>
       )}
     </div>
   );
