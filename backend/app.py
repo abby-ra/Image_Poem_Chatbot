@@ -4,17 +4,18 @@ import google.generativeai as genai
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from PIL import Image
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
 
 # Load API Key from .env file
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+# load_dotenv()
+# api_key = os.getenv("GEMINI_API_KEY")
+api_key = "AIzaSyDmRfCf_5Y3gSDSIqmo4Jy3bVcRRWS497g"
 
-if not api_key:
-    raise ValueError("API key is missing! Set GEMINI_API_KEY in your .env file.")
+# if not api_key:
+    # raise ValueError("API key is missing! Set GEMINI_API_KEY in your .env file.")
 
 genai.configure(api_key=api_key)
 
@@ -38,10 +39,12 @@ def generate_poem():
     model = genai.GenerativeModel("gemini-1.5-flash")
 
     # Generate a poem
-    response = model.generate_content(["Write a poem based on this image.", image])
+    response = model.generate_content(["Write a poem for image with proper breaks and alignment.", image])
 
     # Save poem to JSON
     poem_data = {"text": response.text}
+    #poem_data = {"text": response._result.candidates[0]['content']}  # Adjust if necessary
+
     with open("data.json", "w") as json_file:
         json.dump(poem_data, json_file, indent=4)
 
