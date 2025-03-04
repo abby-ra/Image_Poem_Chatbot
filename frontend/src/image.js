@@ -17,7 +17,7 @@ const ImagePoemChatbot = () => {
     formData.append("image", file);
 
     try {
-      const response = await axios.post("http://localhost:5000/generate_poem", formData);
+      const response = await axios.post("http://192.168.10.34:5000/generate_poem", formData);
       setPoem(response.data.text);
     } catch (error) {
       console.error("Error generating poem:", error);
